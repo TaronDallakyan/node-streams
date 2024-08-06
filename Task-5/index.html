@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Real-time Data Processing</title>
+    <script src="/socket.io/socket.io.js"></script>
+  </head>
+  <body>
+    <h1>Real-time Data Processing</h1>
+    <div id="data"></div>
+    <input type="text" id="inputData" placeholder="Enter data" />
+    <button id="sendButton">Send</button>
+
+    <script>
+      const socket = io();
+
+      socket.on("data", (data) => {
+        const dataDiv = document.getElementById("data");
+        const dataElement = document.createElement("p");
+        dataElement.textContent = `Received: ${data}`;
+        dataDiv.appendChild(dataElement);
+      });
+
+      document.getElementById("sendButton").addEventListener("click", () => {
+        const inputData = document.getElementById("inputData").value;
+        socket.emit("data", inputData);
+      });
+    </script>
+  </body>
+</html>
