@@ -15,7 +15,7 @@
     <script>
       const socket = io();
 
-      socket.on("data", (data) => {
+      socket.on("serverData", (data) => {
         const dataDiv = document.getElementById("data");
         const dataElement = document.createElement("p");
         dataElement.textContent = `Received: ${data}`;

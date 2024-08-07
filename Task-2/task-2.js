@@ -5,6 +5,7 @@ const sourcePath = "source.json";
 const destinationPath = "destination.json";
 
 const transformStream = new Transform({
+  objectMode: true,
   transform(chunk, encoding, callback) {
     let objArray;
 

@@ -27,7 +27,7 @@ io.on("connection", (socket) => {
   socket.on("data", (data) => {
     console.log("Received from client:", data);
 
-    socket.emit("data", data);
+    socket.emit("serverData", data);
   });
 
   socket.on("disconnect", () => {
